@@ -1,0 +1,71 @@
+Computer Science 3 - Binary Search Tree (Lab 6)
+In-Lab Questionnaire
+Your Name: Tommy Li
+
+With your completed BTNode and BST classes, run the BSTTest program
+with the input files input2 and input3:
+
+% java BSTTest input2
+% java BSTTest input3
+
+Question 1: Answer the following questions with regards to the input
+file, input2:
+
+a.) What is the size of the tree: 2047
+b.) What is the height of the tree: 10
+c.) How many comparisons does it take to find or not find::
+	1024: 18345
+	1: 11
+	-1: 11
+	9999: 11
+d.) When finding every element in the tree, what are:
+	The total number of comparisons made: 20481
+	The average number of comparisons made: 10.005374
+
+Question 2: Answer the following questions with regards to the input
+file, input3:
+
+a.) What is the size of the tree: 2047
+b.) What is the height of the tree: 2046
+c.) How many comparisons does it take to find or not find:
+	1024: 2095105
+	1: 1
+	-1: 1
+	9999: 2047
+d.) When finding every element in the tree, what are:
+	The total number of comparisons made: 2096128
+	The average number of comparisons made: 1024.0
+
+Question 3: Based on your understanding of time complexity, what
+is the search time for the tree created by input2, if N is the
+number of elements in the input?
+
+It would be O(log n), as the binary tree follows the properties of
+a complete binary search tree - each node has two children, and each
+level is complete before the next level is begun. As the number of
+elements needed to be searched is cut in half each time the search
+goes down a level, it results in an O(log n) runtime.
+
+Question 4: Based on your understanding of time complexity, what
+is the search time for the tree created by input3, if N is the
+number of elements in the input?
+
+It would be O(n). This binary search tree is essentially a linkedlist,
+as the nodes are linked to each other using the right branch, with
+none of the nodes having left children. The worst case would be when the
+element is at the lowest level of the tree, resulting in O(n).
+
+Question 5: Give a brief explanation of why the search times are
+similar or different.  Is there a relationship between the height
+of a tree and its overall search time?
+
+Evidently, when a tree's height is larger, the worst case would be if
+the element was in the lowest level. However, besides the height, the
+search times varied because of how the tree was contructed. input2
+contained a complete binary search tree, while input3 contained what was
+essentially a linkedlist - a tree with no left children. The search time
+varied because in the worst case, input2 only needs search one branch at
+a time until it finds the desired element. However, input3 had just one
+branch, forcing the search to be run along just the right. The worst case
+would be when the element desired is at the lowest level, forcing a O(n) 
+operation.
