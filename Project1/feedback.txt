@@ -1,0 +1,51 @@
+CSCI-140 Project 01: Feedback
+===============================
+(please use the RETURN key to make multiple lines; don't assume autowrap.)
+
+0. Author Information
+---------------------
+
+CS Username:    txl2747           Name:           Tommy Li
+
+1. Assignment Feedback
+----------------------
+a) What did you learn by doing this assignment?
+I learned that I read things way too fast and need to read
+everything carefully before proceeding. I learned the importance
+of carefully documenting everything so it was readable, as well as
+organizing all the methods into different classes for easier 
+understanding of the code.
+
+----------------------
+b) What was easy about this assignment?
+The game itself wasn't hard to code at all. The rules were quite
+simple, and there are no complex circumstances during any player's
+turn.
+
+----------------------
+c) What was harder than you originally thought?
+The implemnetation of the players. I originally thought that we were
+allowed to put if statements into the main method saying 
+if player == bad:
+    badAlgorithm();
+But when I learned we had to do it another way, inheritance was the only
+thing that came to mind, but I forgot most of my inheritance. So I was forced
+to relearn it.
+
+----------------------
+d) What can the instructor do to improve this assignment?
+The instructor could specify in the assignment about the use of 
+polymorphism, so someone like me who finished the code before he
+announced it in class doesn't have to completely revamp. Otherwise,
+the assignment was fine.
+
+----------------------
+e) What would you have liked to do in this assignment?
+The assignment was fine, but having a bit of freedom in our code
+would have been preferred. Everything had to have a specific output,
+probably for grading purposes, but restricts our creativity.
+
+----------------------
+f) What other issues would you like to discuss?
+I didn't find any other issues, honestly.
+	<ANSWER_HERE>
