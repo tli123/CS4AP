@@ -207,25 +207,21 @@ public class Mappy {
 	} else if (source.equals(dest)) {
             System.out.println("You are already there!\nTotal distance is 0 miles");
 	} else {
-            ArrayList<City> vertices = (ArrayList<City>)graph.vertexData();
+            ArrayList<City> vertices = new ArrayList<City>(graph.vertexData());
             for (int i = 0; i < vertices.size(); i++) {
                 if (vertices.get(i).getName().equals(source)) {
                     vertices.get(i).setCost(0);
 		} else {
                     vertices.get(i).setCost(Integer.MAX_VALUE);
 		}
+                vertices.get(i).setPredecessor(null);
 	    }
             ArrayList<City> finalizedCities = new ArrayList<City>();
             while (vertices.size() > 0) {
-                Collections.sort(vertices, new Comparator<City>() {
-                    public int compare(City one, City two) {
-                        return one.getCost() - two.getCost();
-                    }
-                });
+                Collections.sort(vertices);
                 if (vertices.size() > 1) {
                     City leastCost = vertices.remove(0);
-                    ArrayList<City> neighbors = (ArrayList<City>)graph.neighborData(leastCost.getName());
-                    for (City neighbor : neighbors) {
+                    for (City neighbor : graph.neighborData(leastCost.getName())) {
                         if (vertices.contains(neighbor)) {
                             for (int i = 0; i < vertices.size(); i++) {
                                 if (neighbor.getName().equals(vertices.get(i).getName())) {
