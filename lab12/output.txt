@@ -1,0 +1,352 @@
+Begin test0. ===============================
+
+The troll scowls "Get in line!" when Al shows up at the bridge.
+Al is starting to cross.
+	Al 1 seconds.
+	Al 2 seconds.
+Al leaves at Merctran.
+The troll scowls "Get in line!" when Bob shows up at the bridge.
+Bob is starting to cross.
+	Bob 1 seconds.
+	Bob 2 seconds.
+	Bob 3 seconds.
+Bob leaves at Sicstine.
+
+=============================== End test0.
+Begin test1. ===============================
+
+The troll scowls "Get in line!" when Al shows up at the bridge.
+Al is starting to cross.
+The troll scowls "Get in line!" when Bob shows up at the bridge.
+Bob is starting to cross.
+	Al 1 seconds.
+	Bob 1 seconds.
+The troll scowls "Get in line!" when Cathy shows up at the bridge.
+	Al 2 seconds.
+Al leaves at Merctran.
+Cathy is starting to cross.
+Bob leaves at Merctran.
+The troll scowls "Get in line!" when Doris shows up at the bridge.
+Doris is starting to cross.
+	Cathy 1 seconds.
+Cathy leaves at Sicstine.
+The troll scowls "Get in line!" when Edith shows up at the bridge.
+Edith is starting to cross.
+	Doris 1 seconds.
+	Edith 1 seconds.
+	Doris 2 seconds.
+Doris leaves at Sicstine.
+The troll scowls "Get in line!" when Fred shows up at the bridge.
+Fred is starting to cross.
+	Edith 2 seconds.
+Edith leaves at Merctran.
+	Fred 1 seconds.
+Fred leaves at Sicstine.
+
+=============================== End test1.
+Begin test2. ===============================
+
+The troll scowls "Get in line!" when Abomasnow shows up at the bridge.
+Abomasnow is starting to cross.
+	Abomasnow 1 seconds.
+	Abomasnow 2 seconds.
+Abomasnow leaves at Merctran.
+The troll scowls "Get in line!" when Blastoise shows up at the bridge.
+Blastoise is starting to cross.
+	Blastoise 1 seconds.
+	Blastoise 2 seconds.
+	Blastoise 3 seconds.
+Blastoise leaves at Sicstine.
+The troll scowls "Get in line!" when Charizard shows up at the bridge.
+Charizard is starting to cross.
+	Charizard 1 seconds.
+	Charizard 2 seconds.
+	Charizard 3 seconds.
+The troll scowls "Get in line!" when Diancie shows up at the bridge.
+Diancie is starting to cross.
+	Charizard 4 seconds.
+	Diancie 1 seconds.
+	Charizard 5 seconds.
+	Diancie 2 seconds.
+	Charizard 6 seconds.
+Charizard leaves at Merctran.
+	Diancie 3 seconds.
+The troll scowls "Get in line!" when Elgyem shows up at the bridge.
+Elgyem is starting to cross.
+	Diancie 4 seconds.
+Diancie leaves at Sicstine.
+	Elgyem 1 seconds.
+Elgyem leaves at Merctran.
+The troll scowls "Get in line!" when Feraligatr shows up at the bridge.
+Feraligatr is starting to cross.
+	Feraligatr 1 seconds.
+	Feraligatr 2 seconds.
+	Feraligatr 3 seconds.
+The troll scowls "Get in line!" when Gengar shows up at the bridge.
+Gengar is starting to cross.
+	Feraligatr 4 seconds.
+	Gengar 1 seconds.
+	Feraligatr 5 seconds.
+	Gengar 2 seconds.
+	Feraligatr 6 seconds.
+Feraligatr leaves at Sicstine.
+	Gengar 3 seconds.
+The troll scowls "Get in line!" when Heracross shows up at the bridge.
+Heracross is starting to cross.
+	Gengar 4 seconds.
+	Heracross 1 seconds.
+	Gengar 5 seconds.
+	Heracross 2 seconds.
+	Gengar 6 seconds.
+	Heracross 3 seconds.
+	Gengar 7 seconds.
+Gengar leaves at Merctran.
+The troll scowls "Get in line!" when Igglybuff shows up at the bridge.
+Igglybuff is starting to cross.
+	Heracross 4 seconds.
+	Igglybuff 1 seconds.
+	Heracross 5 seconds.
+	Igglybuff 2 seconds.
+Igglybuff leaves at Merctran.
+	Heracross 6 seconds.
+	Heracross 7 seconds.
+The troll scowls "Get in line!" when Jumpluff shows up at the bridge.
+Jumpluff is starting to cross.
+	Heracross 8 seconds.
+	Jumpluff 1 seconds.
+	Heracross 9 seconds.
+Heracross leaves at Sicstine.
+	Jumpluff 2 seconds.
+	Jumpluff 3 seconds.
+Jumpluff leaves at Sicstine.
+The troll scowls "Get in line!" when Kangaskhan shows up at the bridge.
+Kangaskhan is starting to cross.
+	Kangaskhan 1 seconds.
+	Kangaskhan 2 seconds.
+	Kangaskhan 3 seconds.
+The troll scowls "Get in line!" when Lucario shows up at the bridge.
+Lucario is starting to cross.
+	Kangaskhan 4 seconds.
+	Lucario 1 seconds.
+	Kangaskhan 5 seconds.
+	Lucario 2 seconds.
+	Kangaskhan 6 seconds.
+	Lucario 3 seconds.
+	Kangaskhan 7 seconds.
+The troll scowls "Get in line!" when Medicham shows up at the bridge.
+Medicham is starting to cross.
+	Lucario 4 seconds.
+	Kangaskhan 8 seconds.
+Kangaskhan leaves at Merctran.
+	Medicham 1 seconds.
+	Lucario 5 seconds.
+	Medicham 2 seconds.
+	Lucario 6 seconds.
+Lucario leaves at Sicstine.
+	Medicham 3 seconds.
+	Medicham 4 seconds.
+	Medicham 5 seconds.
+Medicham leaves at Merctran.
+
+=============================== End test2.
+Begin test3. ===============================
+
+The troll scowls "Get in line!" when Arceus shows up at the bridge.
+Arceus is starting to cross.
+	Arceus 1 seconds.
+	Arceus 2 seconds.
+Arceus leaves at Merctran.
+The troll scowls "Get in line!" when Bulbasaur shows up at the bridge.
+Bulbasaur is starting to cross.
+	Bulbasaur 1 seconds.
+	Bulbasaur 2 seconds.
+	Bulbasaur 3 seconds.
+Bulbasaur leaves at Sicstine.
+The troll scowls "Get in line!" when Cresselia shows up at the bridge.
+Cresselia is starting to cross.
+	Cresselia 1 seconds.
+	Cresselia 2 seconds.
+	Cresselia 3 seconds.
+The troll scowls "Get in line!" when Darkrai shows up at the bridge.
+Darkrai is starting to cross.
+	Cresselia 4 seconds.
+	Darkrai 1 seconds.
+Darkrai leaves at Sicstine.
+	Cresselia 5 seconds.
+	Cresselia 6 seconds.
+Cresselia leaves at Merctran.
+The troll scowls "Get in line!" when Entei shows up at the bridge.
+Entei is starting to cross.
+	Entei 1 seconds.
+	Entei 2 seconds.
+	Entei 3 seconds.
+The troll scowls "Get in line!" when Ferrothorn shows up at the bridge.
+Ferrothorn is starting to cross.
+	Entei 4 seconds.
+	Ferrothorn 1 seconds.
+	Entei 5 seconds.
+	Ferrothorn 2 seconds.
+Ferrothorn leaves at Sicstine.
+	Entei 6 seconds.
+Entei leaves at Merctran.
+The troll scowls "Get in line!" when Genesect shows up at the bridge.
+Genesect is starting to cross.
+	Genesect 1 seconds.
+Genesect leaves at Merctran.
+The troll scowls "Get in line!" when Heatran shows up at the bridge.
+Heatran is starting to cross.
+	Heatran 1 seconds.
+	Heatran 2 seconds.
+	Heatran 3 seconds.
+The troll scowls "Get in line!" when Infernape shows up at the bridge.
+Infernape is starting to cross.
+	Heatran 4 seconds.
+	Infernape 1 seconds.
+	Heatran 5 seconds.
+	Infernape 2 seconds.
+	Heatran 6 seconds.
+	Infernape 3 seconds.
+	Heatran 7 seconds.
+The troll scowls "Get in line!" when Jirachi shows up at the bridge.
+Jirachi is starting to cross.
+	Infernape 4 seconds.
+	Heatran 8 seconds.
+Heatran leaves at Sicstine.
+	Jirachi 1 seconds.
+	Infernape 5 seconds.
+	Jirachi 2 seconds.
+	Infernape 6 seconds.
+Infernape leaves at Merctran.
+	Jirachi 3 seconds.
+The troll scowls "Get in line!" when Keldeo shows up at the bridge.
+Keldeo is starting to cross.
+	Jirachi 4 seconds.
+	Keldeo 1 seconds.
+	Jirachi 5 seconds.
+	Keldeo 2 seconds.
+	Jirachi 6 seconds.
+	Keldeo 3 seconds.
+	Jirachi 7 seconds.
+Keldeo leaves at Merctran.
+The troll scowls "Get in line!" when Landorus shows up at the bridge.
+Landorus is starting to cross.
+	Jirachi 8 seconds.
+	Landorus 1 seconds.
+	Jirachi 9 seconds.
+Jirachi leaves at Sicstine.
+	Landorus 2 seconds.
+	Landorus 3 seconds.
+The troll scowls "Get in line!" when Mew shows up at the bridge.
+Mew is starting to cross.
+	Landorus 4 seconds.
+	Mew 1 seconds.
+	Landorus 5 seconds.
+	Mew 2 seconds.
+	Landorus 6 seconds.
+Landorus leaves at Sicstine.
+	Mew 3 seconds.
+The troll scowls "Get in line!" when Nidoking shows up at the bridge.
+Nidoking is starting to cross.
+	Mew 4 seconds.
+Mew leaves at Merctran.
+	Nidoking 1 seconds.
+	Nidoking 2 seconds.
+	Nidoking 3 seconds.
+The troll scowls "Get in line!" when Omanyte shows up at the bridge.
+Omanyte is starting to cross.
+	Nidoking 4 seconds.
+	Omanyte 1 seconds.
+	Nidoking 5 seconds.
+	Omanyte 2 seconds.
+	Nidoking 6 seconds.
+	Omanyte 3 seconds.
+	Nidoking 7 seconds.
+Nidoking leaves at Sicstine.
+The troll scowls "Get in line!" when Palkia shows up at the bridge.
+Palkia is starting to cross.
+	Omanyte 4 seconds.
+	Palkia 1 seconds.
+	Omanyte 5 seconds.
+	Palkia 2 seconds.
+Palkia leaves at Sicstine.
+	Omanyte 6 seconds.
+	Omanyte 7 seconds.
+The troll scowls "Get in line!" when Quilava shows up at the bridge.
+Quilava is starting to cross.
+	Omanyte 8 seconds.
+Omanyte leaves at Merctran.
+	Quilava 1 seconds.
+	Quilava 2 seconds.
+	Quilava 3 seconds.
+Quilava leaves at Merctran.
+The troll scowls "Get in line!" when Regigigas shows up at the bridge.
+Regigigas is starting to cross.
+	Regigigas 1 seconds.
+	Regigigas 2 seconds.
+	Regigigas 3 seconds.
+The troll scowls "Get in line!" when Shaymin shows up at the bridge.
+Shaymin is starting to cross.
+	Regigigas 4 seconds.
+	Shaymin 1 seconds.
+	Regigigas 5 seconds.
+Regigigas leaves at Sicstine.
+	Shaymin 2 seconds.
+	Shaymin 3 seconds.
+The troll scowls "Get in line!" when Terrakion shows up at the bridge.
+Terrakion is starting to cross.
+	Shaymin 4 seconds.
+	Terrakion 1 seconds.
+	Shaymin 5 seconds.
+	Terrakion 2 seconds.
+	Shaymin 6 seconds.
+Shaymin leaves at Merctran.
+	Terrakion 3 seconds.
+The troll scowls "Get in line!" when Uxie shows up at the bridge.
+Uxie is starting to cross.
+	Terrakion 4 seconds.
+	Uxie 1 seconds.
+	Terrakion 5 seconds.
+	Uxie 2 seconds.
+	Terrakion 6 seconds.
+	Uxie 3 seconds.
+	Terrakion 7 seconds.
+Terrakion leaves at Sicstine.
+The troll scowls "Get in line!" when Volcanion shows up at the bridge.
+Volcanion is starting to cross.
+	Uxie 4 seconds.
+Uxie leaves at Merctran.
+	Volcanion 1 seconds.
+	Volcanion 2 seconds.
+Volcanion leaves at Sicstine.
+The troll scowls "Get in line!" when Weavile shows up at the bridge.
+Weavile is starting to cross.
+	Weavile 1 seconds.
+	Weavile 2 seconds.
+	Weavile 3 seconds.
+Weavile leaves at Merctran.
+The troll scowls "Get in line!" when Xerneas shows up at the bridge.
+Xerneas is starting to cross.
+	Xerneas 1 seconds.
+Xerneas leaves at Sicstine.
+The troll scowls "Get in line!" when Yveltal shows up at the bridge.
+Yveltal is starting to cross.
+	Yveltal 1 seconds.
+	Yveltal 2 seconds.
+	Yveltal 3 seconds.
+The troll scowls "Get in line!" when Zygarde shows up at the bridge.
+Zygarde is starting to cross.
+	Yveltal 4 seconds.
+	Zygarde 1 seconds.
+	Yveltal 5 seconds.
+	Zygarde 2 seconds.
+	Yveltal 6 seconds.
+	Zygarde 3 seconds.
+	Yveltal 7 seconds.
+	Zygarde 4 seconds.
+	Yveltal 8 seconds.
+Yveltal leaves at Merctran.
+	Zygarde 5 seconds.
+	Zygarde 6 seconds.
+Zygarde leaves at Sicstine.
+
+=============================== End test3.

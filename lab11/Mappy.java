@@ -172,7 +172,7 @@ public class Mappy {
         if (!graph.isVertex(city)) {
             throw new NoSuchVertexException("City does not exist.");
 	}
-        ArrayList<City> neighbors =  (ArrayList<City>)graph.neighborData(city);
+        ArrayList<City> neighbors =  ArrayList<City>(graph.neighborData(city));
         Iterator i = neighbors.iterator();
         System.out.println(city + " has " + neighbors.size() + " neighbors:");
         while (i.hasNext()) {
