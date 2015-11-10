@@ -96,7 +96,7 @@ public class Woolie extends Thread implements Runnable {
         int time = 1;
         bridgeGuard.enterBridgePlease(this);
         System.out.println(this.woolieName() + " is starting to cross.");
-        while (time < crossTime) {
+        while (time <= crossTime) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
