@@ -11,6 +11,7 @@
  * <p>
  * Note: java -enableassertions should cause Woolies to validate their side.
  * </p>
+ * @author     Tommy Li
  * @author     Ben Steele
  */
 public class RunWoolies {
@@ -55,7 +56,7 @@ public class RunWoolies {
         TrollsBridge trollBridge = new TrollsBridge( 3 );
 
         // Set an optional, test delay to stagger the start of each woolie.
-        int delay = 4000;
+        int delay = 1000;
 
         // Create the Woolies and store them in an array.
         Thread peds[] = {
@@ -135,6 +136,7 @@ public class RunWoolies {
         }
 
         System.out.println( "\n=============================== End test1." );
+        return;
     }
 
     /**
@@ -150,7 +152,7 @@ public class RunWoolies {
         TrollsBridge trollBridge = new TrollsBridge( 3 );
 
         // Set an optional, test delay to stagger the start of each woolie.
-        int delay = 4000;
+        int delay = 1000;
 
         // Create the Woolies and store them in an array.
         Thread peds[] = {
@@ -207,7 +209,7 @@ public class RunWoolies {
         TrollsBridge trollBridge = new TrollsBridge( 3 );
 
         // Set an optional, test delay to stagger the start of each woolie.
-        int delay = 4000;
+        int delay = 1000;
 
         // Create the Woolies and store them in an array.
         Thread peds[] = {

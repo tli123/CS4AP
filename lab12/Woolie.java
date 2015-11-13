@@ -90,7 +90,7 @@ public class Woolie extends Thread implements Runnable {
     * When the Woolie reaches its destination, display the message
     *     name leaves at city.
     * where "city" is the Woolie's destination. After printing this final message, the woolie tells the troll that it 
-    * is leaving the bridge. 
+    * is leaving the bridge.
     */
     public void run() {
         int time = 1;

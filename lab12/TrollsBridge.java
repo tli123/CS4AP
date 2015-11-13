@@ -1,13 +1,13 @@
 /**
- * TrollBridge.java
+ * TrollsBridge.java
  *
  * This class holds the bridge the Woolies will cross.
  *
  * File:
- *	$Id: TrollBridge.java,v 1.0 2015/11/10 17:21:11 csci140 Exp csci140 $
+ *	$Id: TrollsBridge.java,v 1.0 2015/11/10 17:21:11 csci140 Exp csci140 $
  *
  * Revisions:
- *	$Log: TrollBridge.java,v $
+ *	$Log: TrollsBridge.java,v $
  *	Initial revision
  *
  */
@@ -75,7 +75,7 @@ public class TrollsBridge {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.err.print("InterrupedException: Thread cannot be placed in wait()");
+                System.err.print("InterruptedException: Cannot wait on thread.");
             }
         }
         onBridge++;
@@ -93,7 +93,7 @@ public class TrollsBridge {
     * access by calling threads. That means synchronized methods are needed.
     *
     */
-    public void leave() {
+    public synchronized void leave() {
         onBridge--;
         try {
             notifyAll();
