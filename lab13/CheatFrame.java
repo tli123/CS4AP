@@ -40,6 +40,7 @@ public class CheatFrame extends JFrame {
 	}
         this.setSize(300, 300);
         this.setLocation(500, 100);
+        this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 

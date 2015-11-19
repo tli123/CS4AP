@@ -35,37 +35,37 @@ public class GViewControl extends JFrame implements Observer {
     private ConcentrationModel model;
 
     /**
-     * The undo stack of the game.
+     * The CardButtons in the game.
      */
-    private ArrayList<CardButton> undoStack;
+    private ArrayList<CardButton> cardButtons;
 
     /**
-     * The number of moves that were made.
-     */
-    private int moveCount;
-
-    /**
-     * The label on the top of the game.
+     * The label that has the status of the game.
      */
     private JLabel topLine;
 
     /**
-     * The middle JPanel, that holds the buttons.
+     * Holds the potential colors of all of the CardButtons.
      */
-    private JPanel middle;
+    private Color[] color = new Color[]{Color.BLUE, Color.CYAN, Color.DARK_GRAY,
+                                       Color.GREEN, Color.MAGENTA, Color.ORANGE,
+                                        Color.PINK, Color.RED};
 
     /**
      * Constucts a GViewControl object.
      * @param model - The model for the view and controller.
      */
-    public GViewControl(final ConcentrationModel model) {
-        //Sets the title.
-        super("Tommy Li: Concentration Model");
+    public GViewControl(ConcentrationModel model) {
+        //Set up the window.
+        super("Tommy Li: Concentration Game");
+        this.setSize(400, 400);
+        this.setLocation(100, 100);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Initializes some of the necessary instance variables.
+	//Set up the model, and set its observer to the GUI.
         this.model = model;
-        model.addObserver(this); //Add the view and controller as a observer.
-        undoStack = new ArrayList<CardButton>();
+        cardButtons = new ArrayList<CardButton>();
+        model.addObserver(this);
         
         //Sets the layout for the entire frame.
         this.getContentPane().setLayout(new BorderLayout());
@@ -77,103 +77,75 @@ public class GViewControl extends JFrame implements Observer {
         top.add(topLine);
         this.add(top, BorderLayout.NORTH);
 
-        //Sets the cardButtons up in the center pane.
-        middle = new JPanel();
+        //Sets the cards up.
+        JPanel middle = new JPanel();
         middle.setLayout(new GridLayout(model.BOARD_SIZE, model.BOARD_SIZE));
-        ArrayList<CardButton> cardButtons = new ArrayList<CardButton>();
-        for (double i = 0; (int)i < model.NUM_PAIRS; i += 0.5) {
-            final CardButton card = new CardButton((int)(i * 2), (int)i);
-            //Add an Action Listener to each button.
-            card.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-                    switch(undoStack.size() % 2) {
-		    //If no cards are flipped, then add card to undo stack.
-                    case(0):
-                        refreshButtons();
-                        undoStack.clear();
-                        undoStack.add(card);
-                        card.setBackground(getColor(card.getNumber()));
-                        card.setText(card.getNumber() + "");
-                        card.setEnabled(false);
-                        moveCount++;
-                        break;
-                    case(1):
-                        undoStack.add(card);
-                        card.setBackground(getColor(card.getNumber()));
-                        card.setText(card.getNumber() + "");
-                        card.setEnabled(false);
-                        moveCount++;
-                        if (undoStack.get(0).getNumber() == undoStack.get(1).getNumber()) {
-                            undoStack.clear();
-                        }
-                        break;
-                    }
-                    //Let model know that the view was changed.
-                    model.setChanged();
-                    model.notifyObservers(card);
-                }
-	    });
-            cardButtons.add(card);
-        }
-        Collections.shuffle(cardButtons);
-        for (CardButton cardButton : cardButtons) {
-            middle.add(cardButton);
-        }
+        //The buttonListener for all the buttons.
+        ButtonListener buttonListener = new ButtonListener();
+        for (int i = 0; i < model.NUM_CARDS; i++) {
+            CardButton button = new CardButton(i);
+            button.addActionListener(buttonListener);
+            button.setBorderPainted(true);
+	    button.setContentAreaFilled(true);
+	    button.setOpaque(false);
+            middle.add(button);
+            cardButtons.add(button);
+	}
         this.add(middle);
 
-        //Sets up the bottom three buttons.
+        //Set the last 3 buttons up.
         JPanel bottom = new JPanel();
         bottom.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        JButton reset = new JButton("Reset"); //Reset Button
-        //Add Action Listener to reset.
-        reset.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-                resetButtons();
-	    }
-	});
-        JButton cheat = new JButton("Cheat"); //Cheat Button
-        //Add Action Listener to cheat.
-        final ArrayList<CardButton> CardButtons = cardButtons;
-        cheat.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-                for (CardButton cardButton : CardButtons) {
-                    cardButton.setText(cardButton.getNumber() + "");
-                    cardButton.setBackground(getColor(cardButton.getNumber()));
-                    cardButton.setEnabled(false);
-                }
-                CheatFrame cheater = new CheatFrame(CardButtons, model.BOARD_SIZE);
-                cheater.setVisible(true);
-                model.setChanged();
-                model.notifyObservers();
-	    }
-	});
-        JButton undo = new JButton("Undo"); //Undo Button
-        //Add Action Listener to undo.
-        undo.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-                if (undoStack.size() > 0) {
-                    undo();
-                    undoStack.remove(undoStack.size() - 1);
-		}
-	    }
-	});
-        bottom.add(reset);
-        bottom.add(cheat);
-        bottom.add(undo);
+        String[] bottomButtons = new String[]{"Reset", "Cheat", "Undo"};
+        for (int i = 0; i < bottomButtons.length; i++) {
+            JButton button = new JButton(bottomButtons[i]);
+            button.addActionListener(buttonListener);
+            bottom.add(button);
+	}
         this.add(bottom, BorderLayout.SOUTH);
 
-        //Sets up the properties of the window.
-        this.setSize(400, 400);
-        this.setLocation(100, 100);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Make the GUI visible.
         this.setVisible(true);
     }
 
     /**
-     * Start the concentration game.
+     * Private class that implements a Button Listener. Acts
+     * as the primary button listener for all buttons in the
+     * GUI.
      */
-    private void startGame() {
-
+    private class ButtonListener implements ActionListener {
+	/**
+	 * Checks for any Button actions, and depending on what
+	 * button is pressed, gives the appropriate action.
+	 * @param e - The ActionEvent.
+	 */
+        public void actionPerformed(ActionEvent e) {
+	    //CardButton
+            if (e.getSource() instanceof CardButton) {
+                model.selectCard(((CardButton)e.getSource()).getPos());
+	    } else if (e.getActionCommand().equals("Cheat")) {
+		//Chest
+                ArrayList<CardButton> cheat = new ArrayList<CardButton>();
+                ArrayList<CardFace> cardFaces = model.cheat();
+                for (CardFace cardFace : cardFaces) {
+                    CardButton cheatButton = new CardButton(cardFace.getNumber());
+                    cheatButton.setText(cardFace.getNumber() + "");
+                    cheatButton.setBackground(color[cardFace.getNumber()]);
+                    cheatButton.setEnabled(false);
+                    cheatButton.setBorderPainted(false);
+	            cheatButton.setContentAreaFilled(false);
+	            cheatButton.setOpaque(true);
+		    cheat.add(cheatButton);
+		}
+                CheatFrame cheatFrame = new CheatFrame(cheat, model.BOARD_SIZE);
+	    } else if (e.getActionCommand().equals("Reset")) {
+		//Reset
+                model.reset();
+	    } else if (e.getActionCommand().equals("Undo")) {
+		//Undo
+                model.undo();
+	    }
+	}
     }
 
     /**
@@ -185,89 +157,33 @@ public class GViewControl extends JFrame implements Observer {
      * @param o - An Object -- not used.
      */
     public void update(Observable t, Object o) {
-        String numCard = "";
-        if (undoStack.size()%2 == 0) {
-            numCard = "first";
-	} else if (undoStack.size()%2 == 1) {
-            numCard = "second";
-	}
-        topLine.setText("Moves: " + moveCount + "Select the " + numCard + " card.");
-        revalidate();
-    }
-
-    /**
-     * Retrieves the color for the number.
-     * @param The number on the card.
-     * @return The color.
-     */
-    private Color getColor(int cardNum) {
-        Color[] colors = new Color[]{Color.BLUE, Color.CYAN, Color.DARK_GRAY,
-                                     Color.GREEN, Color.MAGENTA, Color.ORANGE,
-                                     Color.PINK, Color.RED};
-        return cardNum <= 7 ? colors[cardNum] : null;
-    }
-
-    /**
-     * Undoes the last two moves if two cards were chosen and they
-     * do not match.
-     */
-    private void refreshButtons() {
-        Component[] components = middle.getComponents();
-        for (int i = 0; undoStack.size() == 2 && i < components.length; i++) {
-            if (components[i] instanceof CardButton) {
-                if (undoStack.get(0).equals(components[i]) || undoStack.get(1).equals(components[i])) {
-                    CardButton component = (CardButton)(components[i]);
-                    component.setText("");
-                    component.setBackground(null);
-                    component.setEnabled(true);
-                    components[i] = (Component)component;
-		}
+        ArrayList<CardFace> cards = model.getCards();
+        for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).isFaceUp()) {
+                cardButtons.get(i).setText(cards.get(i).getNumber() + "");
+                cardButtons.get(i).setBackground(color[cards.get(i).getNumber()]);
+                cardButtons.get(i).setEnabled(false);
+                cardButtons.get(i).setBorderPainted(false);
+	        cardButtons.get(i).setContentAreaFilled(false);
+	        cardButtons.get(i).setOpaque(true);
+	    } else {
+                cardButtons.get(i).setText("");
+                cardButtons.get(i).setBackground(null);
+                cardButtons.get(i).setEnabled(true);
+                cardButtons.get(i).setBorderPainted(true);
+	        cardButtons.get(i).setContentAreaFilled(true);
+	        cardButtons.get(i).setOpaque(false);
 	    }
 	}
-        model.setChanged();
-        model.notifyObservers(middle);
-    }
-
-    /**
-     * Resets all of the buttons in the game.
-     */
-    private void resetButtons() {
-        Component[] components = middle.getComponents();
-        for (int i = 0; i < components.length; i++) {
-            if (components[i] instanceof CardButton) {
-                CardButton component = (CardButton)(components[i]);
-                component.setText("");
-                component.setBackground(null);
-                component.setEnabled(true);
-                components[i] = (Component)component;
-	    }
+        int faceUp = model.howManyCardsUp();
+        String text;
+        if (faceUp == 2) {
+            text = " No Match: Undo or select a card.";
+	} else {
+	    text = " Select the" + (faceUp % 2 == 0 ? " first " : " second ") + "card";
 	}
-        moveCount = 0;
-        undoStack.clear();
-        model.setChanged();
-        model.notifyObservers(middle);
-    }
-
-    /**
-     * Undoes the last move.
-     */
-    public void undo() {
-        Component[] components = middle.getComponents();
-        for (int i = 0; i < components.length; i++) {
-            if (components[i] instanceof CardButton) {
-                if (undoStack.get(undoStack.size() - 1).equals(components[i])) {
-                    CardButton component = (CardButton)(components[i]);
-                    component.setText("");
-                    component.setBackground(null);
-                    component.setEnabled(true);
-                    components[i] = (Component)component;
-                    break;
-		}
-	    }
-	}
-        moveCount--;
-        model.setChanged();
-        model.notifyObservers(middle);
+	topLine.setText("Moves: " + model.getMoveCount() + text);
+        validate();
     }
 
     /**

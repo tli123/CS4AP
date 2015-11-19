@@ -32,19 +32,13 @@ public class CardButton extends JButton {
     private int pos;
 
     /**
-     * The number that is on the card.
-     */
-    private int number;
-
-    /**
      * Constructs a CardButton object.
      * @param pos - The position or index of the represented card 
      *              in the model.
      */
-    public CardButton(int pos, int number) {
+    public CardButton(int pos) {
         super();
         this.pos = pos;
-        this.number = number;
     }
 
     /**
@@ -56,23 +50,4 @@ public class CardButton extends JButton {
         return pos;
     }
 
-    /**
-     * Get the number that is on the card. 
-     * @return The number on the card.
-     */
-    public int getNumber() {
-        return number;
-    }
-
-    /**
-     * Checks if two CardButtons are equal.
-     * @param other - The CardButton that this is being compared to.
-     * @return True if they are equal, false otherwise.
-     */
-    public boolean equals(CardButton other) {
-        if (this.number == other.getNumber() && this.pos == other.getPos()) {
-            return true;
-	}
-        return false;
-    }
 }

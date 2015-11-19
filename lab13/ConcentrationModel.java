@@ -5,7 +5,7 @@
  *
  *
  * File:
- *	$Id: ConcetrationModel.java,v 1.0 2015/11/19 01:30:32 csci140 Exp csci140 $
+ *	$Id: ConcentrationModel.java,v 1.0 2015/11/19 01:30:32 csci140 Exp csci140 $
  *
  * Revisions:
  *	$Log: ConcentrationModel.java,v $
@@ -63,20 +63,13 @@ public class ConcentrationModel extends Observable {
      */
     public ConcentrationModel() {
 	this.cards = new ArrayList<Card>();
-
 	for (int n = 0; n < NUM_PAIRS; ++n) {
 	    Card card1 = new Card(n);
 	    Card card2 = new Card(n);
 	    this.cards.add(card1);
 	    this.cards.add(card2);
 	}
-
 	reset();
-    }
-
-    @Override
-    public void setChanged() {
-        super.setChanged();
     }
 
     /**
@@ -117,6 +110,8 @@ public class ConcentrationModel extends Observable {
      */    
     public void undo(){
 	pop(true);
+        setChanged();
+        notifyObservers();
     }
 
 
@@ -171,9 +166,9 @@ public class ConcentrationModel extends Observable {
 	    default:
 		throw new RuntimeException("Internal Error: undoStack too big.");
 	    }
-	} else {
-
-	}
+	} else {}
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -183,7 +178,6 @@ public class ConcentrationModel extends Observable {
      */    
     public ArrayList<CardFace> getCards() {
 	ArrayList<CardFace> faces = new ArrayList<CardFace>();
-
 	for (Card card : cards) {
 	    if (card.isFaceUp()) {
 		faces.add(card);
@@ -201,7 +195,6 @@ public class ConcentrationModel extends Observable {
      */
     public ArrayList<CardFace> cheat() {
 	ArrayList<CardFace> faces = new ArrayList<CardFace>();
-
 	for (Card card : cards) {
 	    faces.add(card);
 	}
@@ -224,20 +217,17 @@ public class ConcentrationModel extends Observable {
      * shuffled.  The undo stack and the number of moves are cleared.
      *
      */
-    public void reset() {
-	
+    public void reset() {	
 	for (Card card : cards) {
 	    if (card.isFaceUp()) {
 		card.toggleFace();
 	    }
 	}
-
 	Collections.shuffle(cards);
-
 	this.undoStack = new ArrayList<Card>();
-
 	this.moveCount = 0;
-
+        setChanged();
+        notifyObservers();
     }
 
     /**
