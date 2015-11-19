@@ -1,3 +1,25 @@
+/**
+ * City.java
+ *
+ * This holds a City, which is the vertex for the graph. Holds the various
+ * set and get methods to access its attributes.
+ *
+ *
+ * File:
+ *	$Id: City.java,v 1.0 2015/11/03 03:26:22 csci140 Exp csci140 $
+ *
+ * Revisions:
+ *	$Log: City.java,v $
+ *	Initial revision
+ *
+ */
+
+/**
+ * The vertex of the graph, a City.
+ *
+ * @author Tommy Li
+ */
+
 public class City implements Comparable<City> {
 
     /**
