@@ -44,7 +44,7 @@ public class MyWebServer {
             try {
                 Socket connected = socket.accept();
                 Servant servant = new Servant(connected);
-                System.out.println(this.toString());
+                System.out.println(connected.toString());
                 servant.run();
 	    } catch (IOException e) {
                 System.err.print("Error: " + e.getMessage());
