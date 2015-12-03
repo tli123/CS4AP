@@ -38,7 +38,6 @@ public class MyWebServer {
             return;
 	}
 
-        portNumber = socket.getLocalPort();
         System.out.println("The server is listening on Port " + socket.getLocalPort() + ".");
 
         while (true) {

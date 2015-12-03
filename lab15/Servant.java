@@ -1,7 +1,7 @@
 /**
  * Servant.java
  *
- * This class holds the file transfer spect to the server.
+ * This class holds the file transfer aspect to the server.
  *
  * File:
  *	$Id: Servant.java,v 1.0 2015/12/03 12:12:31 csci140 Exp csci140 $
@@ -24,6 +24,7 @@ import java.net.InetAddress;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.lang.Thread;
@@ -39,7 +40,7 @@ public class Servant extends Thread implements Runnable {
     /**
      * The INetAddress of the socket.
      */
-    private InetAddrss inetAddress;
+    private InetAddress inetAddress;
 
     /**
      * The port number this socket is associated with.
@@ -57,38 +58,43 @@ public class Servant extends Thread implements Runnable {
      */
     public Servant(Socket socket) {
         this.socket = socket;
-        inetAddress = socket.getINetAddress();
+        inetAddress = socket.getInetAddress();
         portNumber = socket.getPort();
-        hostName = inetaddress.getHostName();
+        hostName = inetAddress.getHostName();
     }
 
     /**
      * The run method of the Servant.
      */
     public void run() {
-        BufferedReader in = new BufferedReader(new InputStream(socket.getInputStream()));
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
-        out.println("Name of file?");
-
-        String input = in.readLine();
-        BufferedReader fileReader;
         try {
-            fileReader = new BufferedReader(new FileReader(input));
-            while (true) {
-                String line = fileReader.readLine();
-                out.println(line);
-	        if (line == null) {
-                    System.out.println("Transfer completed.");
-                    socket.close();
-                    fileReader.close();
-                    return;
-		}
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            out.println("Name of file?");
+
+            String input = " "; 
+            while (!input.equals("")) {
+                input = in.readLine();
+		break;
 	    }
-	} catch (FileNotFoundException e) {
-            out.println("File not found.");
-            socket.close();
-            return;
-	}
+            BufferedReader fileReader;
+            try {
+                fileReader = new BufferedReader(new FileReader(input));
+                while (true) {
+                    String line = fileReader.readLine();
+	            if (line == null) {
+                        System.out.println("Transfer completed.");
+                        socket.close();
+                        fileReader.close();
+                        return;
+		    }
+                    out.println(line);
+	        }
+	    } catch (FileNotFoundException e) {
+                out.println("File not found.");
+                socket.close();
+                return;
+	    }
+	} catch (IOException e) {}
     }
 }

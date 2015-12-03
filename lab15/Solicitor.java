@@ -1,7 +1,7 @@
 /**
  * Solicitor.java
  *
- * This class holds the file transfer spect to the server.
+ * This class holds the client to the server.
  *
  * File:
  *	$Id: Solicitor.java,v 1.0 2015/12/03 12:32:28 csci140 Exp csci140 $
@@ -21,9 +21,11 @@
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -51,39 +53,44 @@ public class Solicitor {
      * @param Server_name - the name of the server.
      * @param Server_port - the port the server is connected to.
      */
-    public Solicitor(String Server_name, int Server_port) {
+    public Solicitor(String Server_name, int Server_port) throws UnknownHostException, IOException {
         inetAddress = InetAddress.getByName(Server_name);
-        socket = new Socket(inetAdress, Server_port);
+        socket = new Socket(inetAddress, Server_port);
+	BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-        BufferedReader in = new BufferedReader(new InputStream(socket.getInputStream()));
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
-        System.out.println(in.nextLine());
-
-        sc = new Scanner(System.in);
-        String filename = null;
-        while(sc.hasNextLine()) {
-            filename = sc.nextLine();
+	System.out.println(in.readLine());
+  
+	sc = new Scanner(System.in);
+	String filename = null;
+	while(sc.hasNextLine()) {
+	    String file = sc.nextLine();
+            if (!file.equals("")) {
+                filename = file;
+	    }
+	    break;
 	}
 
-        out.println(filename);
+	out.println(filename);
         
-        while (true) {
-            String line = in.nextLine();
-            if (line != null) {
-                System.out.println(line);
-	    } else {
-                socket.close();
-                return;
+	while (true) {
+	    String line = " "; 
+            if (line != null && !line.equals("")) {
+                line = in.readLine();
 	    }
- 	}
+	    if (line == null) {
+		socket.close();
+		return;
+	    }
+	    System.out.println(line);
+	}
     }
 
     /**
      * The main method.
      * @param args - Command line arguments.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException, IOException {
         if (args.length != 2) {
             System.out.println("Usage: java Solicitor Server_name Server_port");
 	}
